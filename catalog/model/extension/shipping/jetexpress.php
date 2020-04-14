@@ -63,7 +63,7 @@ class ModelExtensionShippingJETexpress extends Model {
   			// echo '</script>';
 
 				// prepare new cURL resource
-				$curl = curl_init('http://api.sandbox.jetexpress.co.id/v2/pricings');
+				$curl = curl_init('http://api.jetexpress.co.id/v2/pricings');
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($curl, CURLINFO_HEADER_OUT, true);
 				curl_setopt($curl, CURLOPT_POST, true);
