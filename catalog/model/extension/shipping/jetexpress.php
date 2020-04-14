@@ -47,9 +47,9 @@ class ModelExtensionShippingJETexpress extends Model {
 
 				// body data
 				$data = array(
-    			'origin' => $origin,
+    			'origin' => strtoupper($origin),
 					'OriginZipCode' => $origin_postcode,
-					'destination' => $destination,
+					'destination' => strtoupper($destination),
 					'DestinationZipCode' => $destination_postcode,
 					'isInsured' => $is_insured,
 					'itemValue' => $this->currency->convert($total_price, 'IDR', $this->config->get('config_currency')),
@@ -60,10 +60,14 @@ class ModelExtensionShippingJETexpress extends Model {
 
 				// echo '<script>';
   			// echo 'console.log('. json_encode( $data ) .')';
-  			// echo '</script>';
+				// echo '</script>';
+
+				$url = 'http://api.jetexpress.co.id/v2/pricings';
 
 				// prepare new cURL resource
-				$curl = curl_init('http://api.jetexpress.co.id/v2/pricings');
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, $url);
+				curl_setopt($curl, CURLOPT_FAILONERROR, true);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($curl, CURLINFO_HEADER_OUT, true);
 				curl_setopt($curl, CURLOPT_POST, true);
