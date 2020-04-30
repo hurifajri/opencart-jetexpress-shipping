@@ -39,10 +39,10 @@ class ModelExtensionShippingJETexpress extends Model {
 
 					$total_price += ($product['price']*$product['quantity']);
 
-					$items[$key]['weight'] = (int)$product['weight'];
-					$items[$key]['height'] = (int)$product['height'];
-					$items[$key]['width']  = (int)$product['width'];
-					$items[$key]['length'] = (int)$product['length'];
+					$items[$key]['weight'] = (float)$product['weight'];
+					$items[$key]['height'] = (float)$product['height'];
+					$items[$key]['width']  = (float)$product['width'];
+					$items[$key]['length'] = (float)$product['length'];
 				}
 
 				// body data
